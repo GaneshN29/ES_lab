@@ -1,0 +1,143 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         
+    4 00000000         __Vectors
+    5 00000000 10000000        DCD              0x10000000
+    6 00000004 00000000        DCD              Reset_Handler
+    7 00000008                 ALIGN
+    8 00000008                 AREA             mycode, CODE, READONLY
+    9 00000000                 ENTRY
+   10 00000000                 EXPORT           Reset_Handler
+   11 00000000         
+   12 00000000         Reset_Handler
+   13 00000000 4813            LDR              R0,= SRC
+   14 00000002 4A14            LDR              R2,= DST
+   15 00000004 F04F 0304       MOV              R3, #4
+   16 00000008 F100 0110       ADD              R1, R0, #16
+   17 0000000C         
+   18 0000000C F850 4B04 
+                       Start   LDR              R4, [R0], #4
+   19 00000010 F851 5B04       LDR              R5, [R1], #4
+   20 00000014 EB54 0605       ADCS             R6, R4, R5
+   21 00000018 F842 6B04       STR              R6, [R2], #4
+   22 0000001C F1A3 0301       SUB              R3, #1
+   23 00000020 F093 0F00       TEQ              R3, #0
+   24 00000024 D1F2            BNE              Start
+   25 00000026         
+   26 00000026 F04F 0700       MOV              R7, #0
+   27 0000002A F157 0700       ADCS             R7, #0
+   28 0000002E 6017            STR              R7, [R2]
+   29 00000030         
+   30 00000030 12345678 
+              12345678 
+              12345678 
+              12345678 
+              9ABCDEF0 
+              9ABCDEF0 
+              9ABCDEF0 
+              9ABCDEF0 SRC     DCD              0x12345678, 0x12345678, 0x12345
+678, 0x12345678, 0x9ABCDEF0, 0x9ABCDEF0, 0x9ABCDEF0, 0x9ABCDEF0
+   31 00000050 00000000 
+              00000000         AREA             DATASEG, DATA, READWRITE
+   32 00000000 00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 DST     DCD              0,0,0,0,0
+   33 00000014                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=l2q2.d -
+ol2q2.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NX
+P\LPC17xx --predefine="__EVAL SETA 1" --list=l2q2.lst l2q2.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file l2q2.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 4 in file l2q2.asm
+   Uses
+      At line 2 in file l2q2.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 12 in file l2q2.asm
+   Uses
+      At line 6 in file l2q2.asm
+      At line 10 in file l2q2.asm
+
+SRC 00000030
+
+Symbol: SRC
+   Definitions
+      At line 30 in file l2q2.asm
+   Uses
+      At line 13 in file l2q2.asm
+Comment: SRC used once
+Start 0000000C
+
+Symbol: Start
+   Definitions
+      At line 18 in file l2q2.asm
+   Uses
+      At line 24 in file l2q2.asm
+Comment: Start used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 8 in file l2q2.asm
+   Uses
+      None
+Comment: mycode unused
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DATASEG 00000000
+
+Symbol: DATASEG
+   Definitions
+      At line 31 in file l2q2.asm
+   Uses
+      None
+Comment: DATASEG unused
+DST 00000000
+
+Symbol: DST
+   Definitions
+      At line 32 in file l2q2.asm
+   Uses
+      At line 14 in file l2q2.asm
+Comment: DST used once
+2 symbols
+341 symbols in table
