@@ -1,0 +1,1 @@
+TEST.o: TEST.ASM
